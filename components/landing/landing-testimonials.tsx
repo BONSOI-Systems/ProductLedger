@@ -12,7 +12,7 @@ export function LandingTestimonials() {
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">What Our Customers Say</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Don't just take our word for it. Here's what businesses using Product Ledger have to say.
+              Don&apos;t just take our word for it. Here&apos;s what businesses using Product Ledger have to say.
             </p>
           </div>
         </div>
@@ -31,8 +31,8 @@ export function LandingTestimonials() {
               </div>
             </CardHeader>
             <CardContent>
-              "Product Ledger has transformed how we manage our finances. The overdue management feature alone has saved
-              us thousands."
+            &quot;Product Ledger has transformed how we manage our finances. The overdue management feature alone has saved
+              us thousands.&quot;
             </CardContent>
           </Card>
           <Card>
@@ -49,8 +49,8 @@ export function LandingTestimonials() {
               </div>
             </CardHeader>
             <CardContent>
-              "The real-time data management has been a game-changer for our inventory tracking. We always know exactly
-              what we have in stock."
+            &quot;The real-time data management has been a game-changer for our inventory tracking. We always know exactly
+              what we have in stock.&quot;
             </CardContent>
           </Card>
           <Card>
@@ -67,8 +67,8 @@ export function LandingTestimonials() {
               </div>
             </CardHeader>
             <CardContent>
-              "As a small business owner, I needed something simple yet powerful. Product Ledger is exactly that - easy
-              to use but with all the features I need."
+            &quot;As a small business owner, I needed something simple yet powerful. Product Ledger is exactly that - easy
+              to use but with all the features I need.&quot;
             </CardContent>
           </Card>
         </div>

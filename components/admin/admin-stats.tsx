@@ -24,11 +24,11 @@ export async function AdminStats() {
   const totalRevenue = revenueResult.length > 0 ? revenueResult[0].total : 0
 
   // Get total expenses (sum of all Cash Out entries)
-  const expensesResult = await db
-    .collection(collections.ledger)
-    .aggregate([{ $match: { type: "Cash Out", companyId } }, { $group: { _id: null, total: { $sum: "$amount" } } }])
-    .toArray()
-  const totalExpenses = expensesResult.length > 0 ? expensesResult[0].total : 0
+  // const expensesResult = await db
+  //   .collection(collections.ledger)
+  //   .aggregate([{ $match: { type: "Cash Out", companyId } }, { $group: { _id: null, total: { $sum: "$amount" } } }])
+  //   .toArray()
+  // const totalExpenses = expensesResult.length > 0 ? expensesResult[0].total : 0
 
   // Get pending payments (sum of all entries with status Pending)
   const pendingResult = await db

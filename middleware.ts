@@ -13,15 +13,14 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/customers") ||
     pathname.startsWith("/overdue") ||
     pathname.startsWith("/reports") ||
-    pathname.startsWith("/settings") ||
-    pathname === "/"
+    pathname.startsWith("/settings");
 
   // Check if the path is auth-related
   const isAuthPath =
     pathname.startsWith("/auth/login") ||
     pathname.startsWith("/auth/register") ||
     pathname.startsWith("/auth/forgot-password") ||
-    pathname.startsWith("/auth/reset-password")
+    pathname.startsWith("/auth/reset-password");
 
   // Get the token
   const token = await getToken({ req: request })

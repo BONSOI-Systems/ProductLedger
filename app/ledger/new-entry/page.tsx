@@ -34,7 +34,7 @@ const formSchema = z.object({
 export default function NewLedgerEntryPage() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [customers, setCustomers] = useState<any[]>([])
+  const [customers, setCustomers] = useState<{ _id: string; name: string }[]>([])
   const [isLoadingCustomers, setIsLoadingCustomers] = useState(true)
 
   const form = useForm<z.infer<typeof formSchema>>({

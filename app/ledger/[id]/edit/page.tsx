@@ -35,7 +35,12 @@ export default function EditLedgerEntryPage({ params }: { params: { id: string }
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [customers, setCustomers] = useState<any[]>([])
+  interface Customer {
+    _id: string;
+    name: string;
+  }
+
+  const [customers, setCustomers] = useState<Customer[]>([])
   const [isLoadingCustomers, setIsLoadingCustomers] = useState(true)
   const entryId = params.id
 

@@ -8,7 +8,7 @@ interface LedgerEntry {
   amount: number;
   dueDate: string;
   status: string;
-  [key: string]: any; // Add additional fields if necessary
+  [key: string]: unknown; // Add additional fields if necessary
 }
 
 export async function GET() {
@@ -33,7 +33,7 @@ export async function GET() {
 
     // Find all entries that are past due date and not paid
     const today = new Date()
-    const overdueEntries = await db
+    const overdueEntries = (await db
       .collection(collections.ledger)
       .find({
         companyId,
@@ -41,7 +41,13 @@ export async function GET() {
         status: { $ne: "Paid" },
       })
       .sort({ dueDate: 1 })
-      .toArray()
+      .toArray())
+      .map((doc) => ({
+        amount: doc.amount,
+        dueDate: doc.dueDate,
+        status: doc.status,
+        ...doc,
+      })) as LedgerEntry[]
 
     // Group by days overdue ranges
     const ranges = [

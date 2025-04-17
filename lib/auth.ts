@@ -1,4 +1,4 @@
-import type { NextAuthOptions, User as NextAuthUser, Session as NextAuthSession, DefaultSession } from "next-auth/"
+import type { NextAuthOptions, DefaultSession } from "next-auth/"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { compare, hash } from "bcryptjs"
 import { connectToDatabase, collections } from "@/lib/db"
@@ -70,8 +70,8 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         if (user) {
-          token.role = (user as any).role || "";
-          token.companyName = (user as any).companyName || "";
+          token.role = (user as { role: string; companyName: string }).role || "";
+          token.companyName = (user as { role: string; companyName: string }).companyName || "";
         }
       }
       return token;

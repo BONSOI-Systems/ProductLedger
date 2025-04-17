@@ -55,7 +55,7 @@ export async function PUT(request: Request, context: { params: Promise<{ id: str
       .collection(collections.customers)
       .updateOne({ _id: new ObjectId(resolvedParams.id), companyId }, { $set: customer });
 
-    if (result.matchedCount === 0) {
+    if (result.modifiedCount === 0) {
       return NextResponse.json({ error: "Customer not found" }, { status: 404 });
     }
 

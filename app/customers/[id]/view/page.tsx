@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { format } from "date-fns"
 import { User, Edit, ArrowLeft, Mail, Phone, MapPin, CreditCard, FileText } from "lucide-react"
-import { use } from "react"
+// import { use } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -47,14 +47,24 @@ export default async function ViewCustomerPage({ params }: { params: Promise<{ i
     }
   
     // Get customer's ledger entries
-    let ledgerEntries = [];
+    let ledgerEntries: LedgerEntry[] = [];
     try {
-      ledgerEntries = await db
+      const ledgerCursor = db
         .collection(collections.ledger)
         .find({ customerId: new ObjectId(customerId), companyId })
-        .sort({ date: -1 })
-        .limit(5)
-        .toArray();
+        .sort({ date: -1 });
+
+      if ("limit" in ledgerCursor) {
+        ledgerEntries = (await ledgerCursor.limit(5).toArray()).map(entry => ({
+          _id: entry._id,
+          description: entry.description,
+          date: entry.date,
+          type: entry.type,
+          amount: entry.amount,
+        })) as LedgerEntry[];
+      } else {
+        ledgerEntries = await ledgerCursor.toArray();
+      }
     } catch (error) {
       console.error("Error fetching ledger entries:", error);
     }

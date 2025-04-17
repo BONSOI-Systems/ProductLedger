@@ -1,4 +1,4 @@
-import { MongoClient, type ObjectId } from "mongodb"
+import { MongoClient, type ObjectId, type Db  } from "mongodb"
 
 // MongoDB connection string would come from environment variables
 const MONGODB_URI = process.env.MONGODB_URI || ""
@@ -6,7 +6,8 @@ const MONGODB_DB = process.env.MONGODB_DB || "product_ledger"
 
 // Cache the MongoDB connection
 let cachedClient: MongoClient | null = null
-let cachedDb: any = null
+
+let cachedDb: Db | null = null
 
 export async function connectToDatabase() {
   // If we have a cached connection, use it
@@ -41,7 +42,7 @@ export async function connectToDatabase() {
     return {
       client: null,
       db: {
-        collection: (name: string) => ({
+        collection: () => ({
           find: () => ({
             sort: () => ({
               toArray: async () => [],

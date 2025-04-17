@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -111,7 +111,7 @@ export default function NewCustomerPage() {
                 <div className="flex items-center gap-4">
                   {imagePreview && (
                     <div className="h-20 w-20 rounded-full overflow-hidden bg-muted">
-                      <img
+                      <Image
                         src={imagePreview || "/placeholder.svg"}
                         alt="Customer"
                         className="h-full w-full object-cover"

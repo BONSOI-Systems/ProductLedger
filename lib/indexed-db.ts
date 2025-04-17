@@ -48,7 +48,7 @@ export async function initIndexedDB() {
 }
 
 // Generic function to add an item to an object store
-export async function addItem(storeName: string, item: any) {
+export async function addItem<T>(storeName: string, item: T) {
   const db = (await initIndexedDB()) as IDBDatabase
 
   return new Promise((resolve, reject) => {
@@ -96,7 +96,7 @@ export async function getItemById(storeName: string, id: string) {
 }
 
 // Generic function to update an item
-export async function updateItem(storeName: string, item: any) {
+export async function updateItem<T>(storeName: string, item: T) {
   const db = (await initIndexedDB()) as IDBDatabase
 
   return new Promise((resolve, reject) => {
@@ -130,7 +130,7 @@ export async function deleteItem(storeName: string, id: string) {
 // Function to sync data with the server
 export async function syncWithServer(storeName: string) {
   // Get all items from IndexedDB
-  const items = (await getAllItems(storeName)) as any[]
+  const items = (await getAllItems(storeName)) as unknown[]
 
   // Send items to the server
   try {

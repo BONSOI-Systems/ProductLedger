@@ -87,7 +87,7 @@ export function LandingFooter() {
           </div>
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Product Ledger. All rights reserved.
+          BONSOI Systems © {new Date().getFullYear()} Product Ledger. All rights reserved.
         </div>
       </div>
     </footer>

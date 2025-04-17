@@ -6,16 +6,15 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { format } from "date-fns"
 import { DollarSign, Edit, ArrowLeft, User } from "lucide-react"
-import { use } from "react"
+// import { use } from "react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { markLedgerEntryAsPaid } from "@/lib/actions"
 
 export default async function ViewLedgerEntryPage({ params }: { params: Promise<{ id: string }> }) {
-  // Use React.use to unwrap the params promise
-  const resolvedParams = use(params)
-  const entryId = resolvedParams.id
+    const resolvedParams = await params; // Await params to resolve it
+    const entryId = resolvedParams.id;
 
   const session = await getServerSession(authOptions)
   if (!session?.user?.id) {
